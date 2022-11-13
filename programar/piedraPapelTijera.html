@@ -7,6 +7,7 @@
         <title>Piedra, papel o tijera</title>
 
         <script>
+            
             function aleatorio(min, max)
             {
                 return Math.floor(Math.random()*(max - min + 1) + min)
@@ -36,6 +37,27 @@
                 return resultado
             }
 
+            function combate(pc, jugador)
+            {
+                if(pc == jugador)
+                {
+                    alert("EMPATE 😐")
+                    alert(marcador(triunfos, perdidas))
+                }
+                else if ((jugador == 1 && pc == 3) || (jugador == 2 && pc == 1) || (jugador == 3 && pc == 2))
+                {
+                    alert("GANASTE 😎")
+                    triunfos++
+                    alert(marcador(triunfos, perdidas))
+                }
+                else
+                {
+                    alert("PERDISTE 😵‍💫")
+                    perdidas++
+                    alert(marcador(triunfos, perdidas))
+                }
+            }
+
             function marcador(triunfo, perdida)
             {
                 resultado = "Triunfos: " + triunfo + " - Perdidas: " + perdida
@@ -59,25 +81,10 @@
                 alert("PC elige: " + eleccion(pc))
                 alert("Jugador elige: " + eleccion(jugador))
 
-                //combate
-                if(pc == jugador)
-                {
-                    alert("EMPATE 😐")
-                    alert(marcador(triunfos, perdidas))
-                }
-                else if ((jugador == 1 && pc == 3) || (jugador == 2 && pc == 1) || (jugador == 3 && pc == 2))
-                {
-                    alert("GANASTE 😎")
-                    triunfos++
-                    alert(marcador(triunfos, perdidas))
-                }
-                else
-                {
-                    alert("PERDISTE 😵‍💫")
-                    perdidas++
-                    alert(marcador(triunfos, perdidas))
-                }
+                combate(pc, jugador)
+                
             }
+
         </script>
 
     </head>
