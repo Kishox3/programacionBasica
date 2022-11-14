@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOKEPON!</title>
     <script src="./js/mokepon.js"></script>
+
 </head>
+
 <body>
+
     <h1>MOKEPON! 🔥💧🌿</h1>
 
     <section id="seleccionar-mokepon">
+
         <h2>Elige tu MOKEPON</h2>
 
         <label for="Drauion">Drauion 🔥</label>     <input type="radio" name="mokepon" id="Drauion"/> | 
         <label for="Balisk">Balisk 💧</label>       <input type="radio" name="mokepon" id="Balisk"/> | 
         <label for="Imir">Imir 🌿</label>           <input type="radio" name="mokepon" id="Imir"/> <br><br>
 
-        <button>Seleccionar</button>
+        <button id="boton-mokepon">Seleccionar</button>  <!--  BOTON SELECCIONAR MOKEPON  -->
+
     </section>
     
     <section id="selecionar-ataque">
+
         <h2>COMBATE!</h2>
 
         <p>Tu mascota tiene <span>100</span> puntos de salud</p>
         <p>El enemigo tiene <span>100</span> puntos de salud</p>
 
-        <p>
-            <button>Distancia 🏹</button>
-            <button>Melee ⚔️</button>
+        <p> <!--  BOTONES ATAQUESS  -->
+            <button id="boton-distancia">Distancia 🏹</button>
+            <button id="boton-melee">Melee ⚔️</button>
         </p>
         
     </section>
@@ -41,8 +49,11 @@
     </section>
 
     <section id="reiniciar">
+
         <button>Reiniciar 🔁</button>
+
     </section>
     
 </body>
+
 </html>
