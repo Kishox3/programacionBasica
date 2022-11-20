@@ -1,5 +1,26 @@
+
+let mokeponJugador
+let mokeponComputadora
+let psJugador
+let psComputadora
+
 let ataqueJugador
 let ataqueComputadora
+
+let dañoTotalComputadora
+let dañoTotalJugador
+
+let multiplicadorDañoJugador
+let dañoAtaqueJugador
+let dañoColateralJugador
+
+let multiplicadorDañoComputadora
+let dañoAtaqueComputadora
+let dañoColateralComputadora
+
+let ventaja
+let desventaja
+let neutral
 
 function numeroAleatorio(min, max)
 {
@@ -14,16 +35,24 @@ function iniciarJuego()
 }
 
 function flujoVideojuego()
-{
+{   
     seleccionarMokeponJugador()
-    seleccionarMokeponComputadora()
-    mostrarMokeponDinamicamente(seleccionarMokeponJugador(), seleccionarMokeponComputadora())
+    if(seleccionarMokeponJugador() != undefined)
+    {
+        seleccionarMokeponComputadora()
+        mostrarMokeponDinamicamente(mokeponJugador, mokeponComputadora, psJugador, psComputadora)
 
-    let botonAtaqueEspecial = document.getElementById("boton-ataque-especial")
-    botonAtaqueEspecial.addEventListener("click", ataqueEspecial)
+        let botonAtaqueEspecial = document.getElementById("boton-ataque-especial")
+        botonAtaqueEspecial.addEventListener("click", ataqueEspecial)
 
-    let botonAtaqueFisico = document.getElementById("boton-ataque-fisico")
-    botonAtaqueFisico.addEventListener("click", ataqueFisico)
+        let botonAtaqueFisico = document.getElementById("boton-ataque-fisico")
+        botonAtaqueFisico.addEventListener("click", ataqueFisico)
+
+    }else
+    {
+        alert("Debes seleccionar un Mokepon")
+    }
+
 }
 
 function seleccionarMokeponJugador()
@@ -31,7 +60,6 @@ function seleccionarMokeponJugador()
     let mokepon001 = document.getElementById("mokepon001")
     let mokepon002 = document.getElementById("mokepon002")
     let mokepon003 = document.getElementById("mokepon003")
-    let mokeponJugador = ""
 
     if(mokepon001.checked)
     {
@@ -45,19 +73,14 @@ function seleccionarMokeponJugador()
     {
         mokeponJugador = "Imir 🌿"
     }
-    else
-    {
-        alert("Debes seleccionar un Mokepon")
-    }
 
-    //alert("El Mokepon del jugador es: " + mokeponJugador)
+    psJugador = 100
     return mokeponJugador
 }
 
 function seleccionarMokeponComputadora()
 {
     let random = numeroAleatorio(1,3)
-    let mokeponComputadora = ""
     
     if(random == 1)
     {
@@ -71,29 +94,116 @@ function seleccionarMokeponComputadora()
     {
         mokeponComputadora = "Imir 🌿"
     }
-    //alert("El Mokepon de la computadora es: " + mokeponComputadora)
-    return mokeponComputadora
+
+    psComputadora = 100
 }
 
-function mostrarMokeponDinamicamente(jugador, computadora)
+function mostrarMokeponDinamicamente(mJugador, mComputadora, pJugador, pComputadora)
 {
     let spanMokeponJugador = document.getElementById("span-mokepon-jugador")
     let spanMokeponComputadora = document.getElementById("span-mokepon-computadora")
+    let spanPsJugador = document.getElementById("span-ps-jugador")
+    let spanPsComputadora = document.getElementById("span-ps-computadora")
 
-    spanMokeponComputadora.innerHTML = computadora
-    spanMokeponJugador.innerHTML = jugador   
+    spanMokeponComputadora.innerHTML = mComputadora
+    spanMokeponJugador.innerHTML = mJugador   
+    spanPsJugador.innerHTML = pJugador
+    spanPsComputadora.innerHTML = pComputadora
+}
+
+function mostrarAtaqueDinamicamente()
+{
+    let spanAtaqueJugador = document.getElementById("span-ataque-jugador")
+    let spanAtaqueComputadora = document.getElementById("span-ataque-computadora")
+
+    spanAtaqueJugador.innerHTML = ataqueJugador
+    spanAtaqueComputadora.innerHTML = ataqueComputadora
 }
 
 function ataqueEspecial()
 {
-    ataqueJugador = "ATK Especial"
-    alert(ataqueJugador)
+    ataqueJugador = "✨"
+    dañoAtaqueJugador = 10
+    dañoColateralJugador = 0
+    ataqueAleatorioEnemigo()
+    calculoDaño()
+    mostrarAtaqueDinamicamente()
 }
 
 function ataqueFisico()
 {
-    ataqueJugador = "ATK Fisico"
-    alert(ataqueJugador)
+    ataqueJugador = "🎯"
+    dañoAtaqueJugador = 15
+    dañoColateralJugador = 3
+    ataqueAleatorioEnemigo()
+    calculoDaño()
+    mostrarAtaqueDinamicamente()
+}
+
+function ataqueAleatorioEnemigo()
+{
+    random = numeroAleatorio(1,2)
+    if (random == 1)
+    {
+        ataqueComputadora = "✨"
+        dañoAtaqueJugador = 10
+        dañoColateralJugador = 0
+    }
+    else if (random == 2)
+    {
+        ataqueComputadora = "🎯"
+        dañoAtaqueComputadora = 15
+        dañoColateralComputadora = 3
+    }
+}
+
+function calculoDaño()
+{
+
+    parseFloat(ventaja = 1.5)
+    parseFloat(desventaja = 0.5)
+    parseFloat(neutral = 1)
+
+    if(mokeponJugador == "Drauion 🔥" && mokeponComputadora == "Imir 🌿")
+    {
+        multiplicadorDañoComputadora = desventaja
+        multiplicadorDañoJugador = ventaja
+    }
+    else if(mokeponJugador == "Drauion 🔥" && mokeponComputadora == "Balisk 💧")
+    {
+        multiplicadorDañoComputadora = ventaja
+        multiplicadorDañoJugador = desventaja
+    }
+    else if(mokeponJugador == "Imir 🌿" && mokeponComputadora == "Balisk 💧")
+    {
+        multiplicadorDañoComputadora = desventaja
+        multiplicadorDañoJugador = ventaja
+    }
+    else if(mokeponJugador == "Imir 🌿" && mokeponComputadora == "Drauion 🔥")
+    {
+        multiplicadorDañoComputadora = ventaja
+        multiplicadorDañoJugador = desventaja
+    }
+    else if(mokeponJugador == "Balisk 💧" && mokeponComputadora == "Drauion 🔥")
+    {
+        multiplicadorDañoComputadora = desventaja
+        multiplicadorDañoJugador = ventaja
+    }
+    else if(mokeponJugador == "Balisk 💧" && mokeponComputadora == "Imir 🌿")
+    {
+        multiplicadorDañoComputadora = ventaja
+        multiplicadorDañoJugador = desventaja
+    }
+    else
+    {
+        multiplicadorDañoComputadora = neutral
+        multiplicadorDañoJugador = neutral
+    }
+
+    dañoAtaqueComputadora = parseFloat(dañoAtaqueComputadora) * parseFloat(multiplicadorDañoComputadora)
+    alert(dañoAtaqueComputadora)
+
+    
 }
 
 //escuchara los eventos despues de cargar todo el html
