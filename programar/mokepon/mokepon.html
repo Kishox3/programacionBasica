@@ -18,39 +18,36 @@
     <section id="seleccionar-mokepon">
 
         <h2>Elige tu MOKEPON</h2>
-
-        <label for="Drauion">Drauion 🔥</label>     <input type="radio" name="mokepon" id="Drauion"/> | 
-        <label for="Balisk">Balisk 💧</label>       <input type="radio" name="mokepon" id="Balisk"/> | 
-        <label for="Imir">Imir 🌿</label>           <input type="radio" name="mokepon" id="Imir"/> <br><br>
-
-        <button id="boton-mokepon">Seleccionar</button>  <!--  BOTON SELECCIONAR MOKEPON  -->
+        <label for="mokepon001">Drauion 🔥</label>          <input type="radio" name="mokepon" id="mokepon001"/> | 
+        <label for="mokepon002">Balisk 💧</label>           <input type="radio" name="mokepon" id="mokepon002"/> | 
+        <label for="mokepon003">Imir 🌿</label>             <input type="radio" name="mokepon" id="mokepon003"/> <br><br>
+        <button id="boton-seleccionar-mokepon">Seleccionar</button>  <!--  BOTON SELECCIONAR MOKEPON  -->
 
     </section>
     
-    <section id="selecionar-ataque">
-
-        <h2>COMBATE!</h2>
-
-        <p>Tu mascota tiene <span>100</span> puntos de salud</p>
-        <p>El enemigo tiene <span>100</span> puntos de salud</p>
-
-        <p> <!--  BOTONES ATAQUESS  -->
-            <button id="boton-distancia">Distancia 🏹</button>
-            <button id="boton-melee">Melee ⚔️</button>
-        </p>
-        
-    </section>
-
     <section id="dashboard">
 
-        <p>Tu MOKEPON tipo FUEGO ataco a DISTANCIA</p>
-        <p>Tu MOKEPON TIPO AGUA ataco a MELEE</p>
+        <p>MOKEPON PJ: <span id="span-mokepon-jugador">SELECCIONA UN MOKEPON</span></p>
+        <p>PS: <span id="span-mokepon-jugador-ps"></span></p>
+        <p>MOKEPON PJ: <span id="span-mokepon-computadora">SELECCIONA UN MOKEPON</span></p>
+        <p>PS: <span id="span-mokepon-computadora-ps"></span></p>
+
+    </section>
+
+    <section id="combate">
+
+        <p>
+            <Button id="boton-ataque-especial">ATK Especial ✨</Button>
+            <Button id="boton-ataque-fisico">ATK Fisico 🎯</Button>
+        </p>
 
     </section>
 
     <section id="reiniciar">
 
-        <button>Reiniciar 🔁</button>
+        <p>
+            <button>Reiniciar 🔁</button>
+        </p>
 
     </section>
     
