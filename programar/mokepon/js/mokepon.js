@@ -1,33 +1,14 @@
+//escuchara los eventos despues de cargar todo el html
+window.addEventListener("load", iniciarJuego) 
 
-let mokeponJugador
-let mokeponComputadora
-let psJugador
-let psComputadora
-
-let ataqueJugador
-let ataqueComputadora
-
-let dañoTotalComputadora
-let dañoTotalJugador
-
-let multiplicadorDañoJugador
-let dañoAtaqueJugador
-let dañoColateralJugador
-
-let multiplicadorDañoComputadora
-let dañoAtaqueComputadora
-let dañoColateralComputadora
-
-let ventaja
-let desventaja
-let neutral
-
+//util
 function numeroAleatorio(min, max)
 {
     return Math.floor(Math.random()*(max - min + 1) + min)
 }
 
 
+//flujo
 function iniciarJuego()
 {
     let botonMokeponJugador = document.getElementById("boton-seleccionar-mokepon")
@@ -55,6 +36,8 @@ function flujoVideojuego()
 
 }
 
+
+//seleccion de mokepons
 function seleccionarMokeponJugador()
 {
     let mokepon001 = document.getElementById("mokepon001")
@@ -111,13 +94,28 @@ function mostrarMokeponDinamicamente(mJugador, mComputadora, pJugador, pComputad
     spanPsComputadora.innerHTML = pComputadora
 }
 
-function mostrarAtaqueDinamicamente()
-{
-    let spanAtaqueJugador = document.getElementById("span-ataque-jugador")
-    let spanAtaqueComputadora = document.getElementById("span-ataque-computadora")
 
-    spanAtaqueJugador.innerHTML = ataqueJugador
-    spanAtaqueComputadora.innerHTML = ataqueComputadora
+//section ataques y calculo de daño
+function ataqueAleatorioEnemigo()
+{
+    random = numeroAleatorio(1,2)
+    if (random == 1)
+    {
+        ataqueComputadora = "✨"
+        dañoAtaqueJugador = 10
+        dañoColateralJugador = 0
+    }
+    else if (random == 2)
+    {
+        ataqueComputadora = "🎯"
+        dañoAtaqueComputadora = 15
+        dañoColateralComputadora = 3
+    }
+}
+
+function seleccionAtaqueJugador()
+{
+
 }
 
 function ataqueEspecial()
@@ -140,72 +138,22 @@ function ataqueFisico()
     mostrarAtaqueDinamicamente()
 }
 
-function ataqueAleatorioEnemigo()
-{
-    random = numeroAleatorio(1,2)
-    if (random == 1)
-    {
-        ataqueComputadora = "✨"
-        dañoAtaqueJugador = 10
-        dañoColateralJugador = 0
-    }
-    else if (random == 2)
-    {
-        ataqueComputadora = "🎯"
-        dañoAtaqueComputadora = 15
-        dañoColateralComputadora = 3
-    }
-}
-
 function calculoDaño()
 {
 
-    parseFloat(ventaja = 1.5)
-    parseFloat(desventaja = 0.5)
-    parseFloat(neutral = 1)
-
-    if(mokeponJugador == "Drauion 🔥" && mokeponComputadora == "Imir 🌿")
-    {
-        multiplicadorDañoComputadora = desventaja
-        multiplicadorDañoJugador = ventaja
-    }
-    else if(mokeponJugador == "Drauion 🔥" && mokeponComputadora == "Balisk 💧")
-    {
-        multiplicadorDañoComputadora = ventaja
-        multiplicadorDañoJugador = desventaja
-    }
-    else if(mokeponJugador == "Imir 🌿" && mokeponComputadora == "Balisk 💧")
-    {
-        multiplicadorDañoComputadora = desventaja
-        multiplicadorDañoJugador = ventaja
-    }
-    else if(mokeponJugador == "Imir 🌿" && mokeponComputadora == "Drauion 🔥")
-    {
-        multiplicadorDañoComputadora = ventaja
-        multiplicadorDañoJugador = desventaja
-    }
-    else if(mokeponJugador == "Balisk 💧" && mokeponComputadora == "Drauion 🔥")
-    {
-        multiplicadorDañoComputadora = desventaja
-        multiplicadorDañoJugador = ventaja
-    }
-    else if(mokeponJugador == "Balisk 💧" && mokeponComputadora == "Imir 🌿")
-    {
-        multiplicadorDañoComputadora = ventaja
-        multiplicadorDañoJugador = desventaja
-    }
-    else
-    {
-        multiplicadorDañoComputadora = neutral
-        multiplicadorDañoJugador = neutral
-    }
-
-    dañoAtaqueComputadora = parseFloat(dañoAtaqueComputadora) * parseFloat(multiplicadorDañoComputadora)
-    alert(dañoAtaqueComputadora)
-
-    
 }
 
-//escuchara los eventos despues de cargar todo el html
-window.addEventListener("load", iniciarJuego) 
+
+//display
+function mostrarAtaqueDinamicamente()
+{
+    let spanAtaqueJugador = document.getElementById("span-ataque-jugador")
+    let spanAtaqueComputadora = document.getElementById("span-ataque-computadora")
+
+    spanAtaqueJugador.innerHTML = ataqueJugador
+    spanAtaqueComputadora.innerHTML = ataqueComputadora
+}
+
+
+
 
